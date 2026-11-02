@@ -2,6 +2,8 @@
 
 A first-person neon space platformer for Chrome, built with Three.js. You play an astronaut on glowing floating platforms: run, double jump, shoot alien drones, collect stars and reach the portal. You get 3 lives and every level is harder than the last.
 
+**▶ Play now:** https://merchantsteam29.github.io/neon-space-runner/
+
 ## Run it
 
 ES modules don't load from `file://`, so serve the folder:
