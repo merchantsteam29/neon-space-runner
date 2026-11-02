@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<meta name="theme-color" content="#05010f">
+<title>Neon Void Runner</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&display=swap" rel="stylesheet">
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="style.css">
+<script type="importmap">
+{
+  "imports": {
+    "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+    "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+  }
+}
+</script>
+</head>
+<body>
+<canvas id="c"></canvas>
+<div id="vignette"></div>
+<div id="hitflash"></div>
+<div id="crosshair" class="hidden"><span></span></div>
+<div id="popup"></div>
+<div id="banner"><div id="bannerTitle"></div><div id="bannerSub"></div></div>
+
+<!-- HUD -->
+<div id="hud" class="hidden">
+  <div class="hud-left">
+    <div class="label">SCORE</div>
+    <div id="score">0</div>
+    <div id="lives"></div>
+    <div class="shield"><div id="shieldbar"></div></div>
+  </div>
+  <div class="hud-center">
+    <div id="level">LEVEL 1</div>
+    <div id="stars">★ 0 / 0</div>
+  </div>
+  <button id="pauseBtn" class="touch-only" aria-label="Pause">❚❚</button>
+</div>
+
+<!-- Touch controls -->
+<div id="touch" class="hidden">
+  <div id="joyBase"><div id="joyKnob"></div></div>
+  <div id="btnFire" class="tbtn"><span>FIRE</span><small>drag to aim</small></div>
+  <div id="btnJump" class="tbtn"><span>JUMP</span></div>
+</div>
+
+<!-- Title -->
+<div id="title" class="screen">
+  <div class="panel">
+    <div class="kicker">A NEON SPACE PLATFORMER</div>
+    <h1>NEON VOID<br><span>RUNNER</span></h1>
+    <p class="tag">Leap across glowing platforms, blast alien drones, grab the stars and dive into the portal.</p>
+    <button id="startBtn" class="btn">START</button>
+    <div class="controls desk-only">
+      <div><b>WASD</b> move</div><div><b>MOUSE</b> aim</div>
+      <div><b>CLICK</b> shoot</div><div><b>SPACE</b> jump ×2</div>
+      <div><b>ESC</b> pause</div><div><b>M</b> mute</div>
+    </div>
+    <div class="controls touch-only">
+      <div><b>LEFT THUMB</b> move</div><div><b>RIGHT DRAG</b> aim</div>
+      <div><b>FIRE</b> hold + drag</div><div><b>JUMP</b> tap twice</div>
+    </div>
+    <div class="best">BEST <span id="bestTitle">0</span></div>
+    <div id="rotateHint" class="touch-only">Tip: landscape works best</div>
+  </div>
+</div>
+
+<!-- Pause -->
+<div id="pause" class="screen hidden">
+  <div class="panel">
+    <h2>PAUSED</h2>
+    <button id="resumeBtn" class="btn">RESUME</button>
+    <button id="muteBtn" class="btn ghost">SOUND: ON</button>
+    <button id="quitBtn" class="btn ghost">QUIT TO TITLE</button>
+    <p class="hint desk-only">Click Resume to recapture the mouse</p>
+  </div>
+</div>
+
+<!-- Game over -->
+<div id="gameover" class="screen hidden">
+  <div class="panel">
+    <div class="kicker">SIGNAL LOST</div>
+    <h2>GAME OVER</h2>
+    <div class="stats">
+      <div><span>SCORE</span><b id="goScore">0</b></div>
+      <div><span>BEST</span><b id="goBest">0</b></div>
+      <div><span>LEVEL</span><b id="goLevel">1</b></div>
+      <div><span>STARS</span><b id="goStars">0</b></div>
+      <div><span>DRONES</span><b id="goKills">0</b></div>
+    </div>
+    <div id="newBest" class="hidden">NEW BEST!</div>
+    <button id="againBtn" class="btn">PLAY AGAIN</button>
+    <button id="menuBtn" class="btn ghost">TITLE</button>
+  </div>
+</div>
+
+<div id="err" class="screen hidden"><div class="panel"><h2>WebGL unavailable</h2><p>Your browser couldn't start WebGL. Try the latest Chrome with hardware acceleration enabled.</p></div></div>
+
+<script type="module" src="game.js"></script>
+</body>
+</html>
